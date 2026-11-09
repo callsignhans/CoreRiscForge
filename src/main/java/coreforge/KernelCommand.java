@@ -1,8 +1,8 @@
 package coreforge;
 
-public interface KernelCommand {
-    Register readReg(int num);
-    void writeReg(int num, Register val);
+public interface KernelCommand<T extends  Register> {
+    T readReg(int num);
+    void writeReg(int num, T val);
     byte readRamByte(int num);
     short readRamShort(int num);
     int readRamInt(int num);

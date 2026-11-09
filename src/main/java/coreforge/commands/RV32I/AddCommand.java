@@ -2,18 +2,19 @@ package coreforge.commands.RV32I;
 
 
 import coreforge.KernelCommand;
+import coreforge.Register;
 import coreforge.commands.Command;
 import coreforge.commands.RiscVCommand;
 import coreforge.typesFormat.RegisterTypeFormat;
 
 
 @RiscVCommand(opcode = 0b00000000000110011, type = RegisterTypeFormat.class)
-public class AddCommand extends Command {
+public class AddCommand<T extends Register<T>> extends Command<T> {
     int resultReg;
     int register1;
     int register2;
 
-    public AddCommand(KernelCommand cpu) {
+    public AddCommand(KernelCommand<T> cpu) {
         super(cpu);
     }
 
@@ -31,6 +32,6 @@ public class AddCommand extends Command {
 
     @Override
     public void startAction() {
-        cpu.writeReg(resultReg,cpu.readReg(register1).add(cpu.readReg(register2)));
+        cpu.writeReg(resultReg,cpu.readReg(register1).add(cpu.readReg(register2)).getVal());
     }
 }

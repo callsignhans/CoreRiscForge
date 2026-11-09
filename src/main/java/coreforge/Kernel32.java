@@ -3,9 +3,9 @@ package coreforge;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Kernel32 implements KernelCommand {
+public class Kernel32 implements KernelCommand<Register32> {
 
-    List<Register> regs = new ArrayList<Register>();
+    List<Register32> regs = new ArrayList<>();
 
     public Kernel32() {
         for (int i = 0; i < 32; i++) {
@@ -14,12 +14,12 @@ public class Kernel32 implements KernelCommand {
     }
 
     @Override
-    public Register readReg(int num) {
+    public Register32 readReg(int num) {
         return regs.get(num);
     }
 
     @Override
-    public void writeReg(int num, Register val) {
+    public void writeReg(int num, Register32 val) {
         regs.set(num, val);
     }
 
