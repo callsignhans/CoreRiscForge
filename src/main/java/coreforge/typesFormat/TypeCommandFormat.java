@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 public abstract class TypeCommandFormat<T extends Register<T>> {
     int[] args;
-    HashMap<Integer, Command<T>>commands = new HashMap<>();
+    HashMap<Integer, Command<?>>commands = new HashMap<>();
 
     public TypeCommandFormat(int opcode, KernelCommand<T> cpu) {
         Reflections reflections = new Reflections("coreforge.commands");
