@@ -1,6 +1,7 @@
 package coreforge.typesFormat;
 
 import coreforge.KernelCommand;
+import coreforge.Register;
 import coreforge.commands.*;
 import org.reflections.Reflections;
 
@@ -8,11 +9,11 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.stream.Collectors;
 
-public abstract class TypeCommandFormat {
+public abstract class TypeCommandFormat<T extends Register<T>> {
     int[] args;
-    HashMap<Integer, Command>commands = new HashMap<>();
+    HashMap<Integer, Command<T>>commands = new HashMap<>();
 
-    public TypeCommandFormat(int opcode, KernelCommand cpu) {
+    public TypeCommandFormat(int opcode, KernelCommand<T> cpu) {
         Reflections reflections = new Reflections("coreforge.commands");
         var riscVCommands = reflections.getSubTypesOf(Command.class).stream().
             filter(command -> command.isAnnotationPresent(RiscVCommand.class)).

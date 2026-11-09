@@ -1,9 +1,10 @@
 package coreforge.typesFormat;
 
 import coreforge.KernelCommand;
+import coreforge.Register;
 
-public class RegisterTypeFormat extends TypeCommandFormat {
-    public RegisterTypeFormat(int opcode, KernelCommand kernel){
+public class RegisterTypeFormat<T extends Register<T>> extends TypeCommandFormat<T> {
+    public RegisterTypeFormat(int opcode, KernelCommand<T> kernel){
         super(opcode, kernel);
     }
 
