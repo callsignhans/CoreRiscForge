@@ -1,12 +1,13 @@
 package coreforge.typesFormat;
 
+import java.util.List;
 import coreforge.KernelCommand;
 import coreforge.Register;
 
-public class BranchTypeFormat <T extends Register<T>> extends TypeCommandFormat<T> {
+public class BranchTypeFormat<T extends Register<T>> extends TypeCommandFormat<T> {
 
-    public BranchTypeFormat(int opcode, KernelCommand<T> cpu) {
-        super(opcode, cpu);
+    public BranchTypeFormat(int opcode, KernelCommand<T> cpu, List<String> subPackages) {
+        super(opcode, cpu, subPackages);
     }
 
     @Override

@@ -1,12 +1,13 @@
 package coreforge.typesFormat;
 
+import java.util.List;
 import coreforge.KernelCommand;
 import coreforge.Register;
 
-public class JumpTypeFormat <T extends Register<T>> extends TypeCommandFormat<T> {
+public class JumpTypeFormat<T extends Register<T>> extends TypeCommandFormat<T> {
 
-    public JumpTypeFormat(int opcode, KernelCommand<T> cpu) {
-        super(opcode, cpu);
+    public JumpTypeFormat(int opcode, KernelCommand<T> cpu, List<String> subPackages) {
+        super(opcode, cpu, subPackages);
     }
 
     @Override

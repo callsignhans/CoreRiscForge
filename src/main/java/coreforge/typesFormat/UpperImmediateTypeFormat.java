@@ -1,12 +1,13 @@
 package coreforge.typesFormat;
 
+import java.util.List;
 import coreforge.KernelCommand;
 import coreforge.Register;
 
-public class UpperImmediateTypeFormat <T extends Register<T>> extends TypeCommandFormat<T> {
+public class UpperImmediateTypeFormat<T extends Register<T>> extends TypeCommandFormat<T> {
 
-    public UpperImmediateTypeFormat(int opcode, KernelCommand<T> cpu) {
-        super(opcode, cpu);
+    public UpperImmediateTypeFormat(int opcode, KernelCommand<T> cpu, List<String> subPackages) {
+        super(opcode, cpu, subPackages);
     }
 
     @Override

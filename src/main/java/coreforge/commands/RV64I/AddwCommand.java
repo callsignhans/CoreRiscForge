@@ -2,7 +2,6 @@ package coreforge.commands.RV64I;
 
 import coreforge.KernelCommand;
 import coreforge.Register;
-import coreforge.commands.Command;
 import coreforge.commands.RiscVCommand;
 import coreforge.commands.ThreeArgumentCommand;
 import coreforge.typesFormat.RegisterTypeFormat;

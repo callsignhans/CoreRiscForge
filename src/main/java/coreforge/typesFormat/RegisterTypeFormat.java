@@ -1,18 +1,19 @@
 package coreforge.typesFormat;
 
+import java.util.List;
 import coreforge.KernelCommand;
 import coreforge.Register;
 
 public class RegisterTypeFormat<T extends Register<T>> extends TypeCommandFormat<T> {
-    public RegisterTypeFormat(int opcode, KernelCommand<T> kernel){
-        super(opcode, kernel);
+    public RegisterTypeFormat(int opcode, KernelCommand<T> kernel, List<String> subPackages) {
+        super(opcode, kernel, subPackages);
     }
 
     @Override
     protected int getOpcodeFromCommand(byte[] command) {
         return (((command[0] >> 1) & 0b1111111) << 10) +
-            (((command[2] >> 4) & 0b111) << 7) +
-            (command[3] & 0b01111111);
+                (((command[2] >> 4) & 0b111) << 7) +
+                (command[3] & 0b01111111);
     }
 
     @Override

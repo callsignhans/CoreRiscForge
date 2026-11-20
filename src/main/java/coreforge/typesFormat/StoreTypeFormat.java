@@ -1,12 +1,13 @@
 package coreforge.typesFormat;
 
+import java.util.List;
 import coreforge.KernelCommand;
 import coreforge.Register;
 
-public class StoreTypeFormat <T extends Register<T>> extends TypeCommandFormat<T> {
+public class StoreTypeFormat<T extends Register<T>> extends TypeCommandFormat<T> {
 
-    public StoreTypeFormat(int opcode, KernelCommand<T> cpu) {
-        super(opcode, cpu);
+    public StoreTypeFormat(int opcode, KernelCommand<T> cpu, List<String> subPackages) {
+        super(opcode, cpu, subPackages);
     }
 
     @Override

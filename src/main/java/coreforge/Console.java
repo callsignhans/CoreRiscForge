@@ -1,6 +1,5 @@
 package coreforge;
 
-
 import coreforge.KernelDebug.DumpWidth;
 
 import java.io.BufferedReader;
