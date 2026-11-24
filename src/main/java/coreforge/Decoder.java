@@ -18,10 +18,12 @@ public class Decoder<T extends Register<T>> {
     /**
      * Discovers instruction formats in the requested packages.
      *
-     * @param cpu kernel that provides access to registers and memory
-     * @param subPackages instruction package names relative to {@code coreforge.commands}
-     * @throws IllegalArgumentException if instruction registration finds a conflict or an
-     *     incompatible constructor
+     * @param cpu         kernel that provides access to registers and memory
+     * @param subPackages instruction package names relative to
+     *                    {@code coreforge.commands}
+     * @throws IllegalArgumentException if instruction registration finds a conflict
+     *                                  or an
+     *                                  incompatible constructor
      */
     public Decoder(KernelCommand<T> cpu, List<String> subPackages) {
         for (var pack : subPackages) {
@@ -58,7 +60,7 @@ public class Decoder<T extends Register<T>> {
                 } else {
                     throw new IllegalArgumentException("Classes " + command.type().getName() +
                             " and " + parsers[commandOpcode] + " have same opcode. Opcode is " +
-                            commandOpcode + ", package " + pack);
+                            commandOpcode + " in package " + pack);
                 }
             }
         }
@@ -69,8 +71,10 @@ public class Decoder<T extends Register<T>> {
      *
      * @param command four instruction bytes in most-significant-byte-first order
      * @return command with the decoded operands
-     * @throws IllegalArgumentException if the instruction does not contain four bytes
-     * @throws NullPointerException if no decoder or command is registered for the opcode
+     * @throws IllegalArgumentException if the instruction does not contain four
+     *                                  bytes
+     * @throws NullPointerException     if no decoder or command is registered for
+     *                                  the opcode
      */
     public Command parse(byte[] command) {
         if (command.length != 4) {

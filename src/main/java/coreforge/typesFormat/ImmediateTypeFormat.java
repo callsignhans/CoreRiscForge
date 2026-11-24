@@ -38,4 +38,9 @@ public class ImmediateTypeFormat<T extends Register<T>> extends TypeCommandForma
     protected void getArgs(int[] outputArray, byte[] command) {
 
     }
+
+    @Override
+    protected int getCountBitInOpcode() {
+        return 10;
+    }
 }

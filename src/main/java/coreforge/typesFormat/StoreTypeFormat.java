@@ -38,4 +38,9 @@ public class StoreTypeFormat<T extends Register<T>> extends TypeCommandFormat<T>
     protected void getArgs(int[] outputArray, byte[] command) {
 
     }
+
+    @Override
+    protected int getCountBitInOpcode() {
+        return 10;
+    }
 }

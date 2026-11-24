@@ -22,13 +22,16 @@ public abstract class TypeCommandFormat<T extends Register<T>> {
     /**
      * Discovers and instantiates commands for the given base opcode.
      *
-     * @param opcode seven-bit base opcode to register
-     * @param cpu kernel that provides access to registers and memory
-     * @param subPackages instruction package names relative to {@code coreforge.commands}
-     * @throws IllegalArgumentException if instruction registration finds a conflict or an
-     *     incompatible constructor
+     * @param opcode      seven-bit base opcode to register
+     * @param cpu         kernel that provides access to registers and memory
+     * @param subPackages instruction package names relative to
+     *                    {@code coreforge.commands}
+     * @throws IllegalArgumentException if instruction registration finds a conflict
+     *                                  or an
+     *                                  incompatible constructor
      */
     public TypeCommandFormat(int opcode, KernelCommand<T> cpu, List<String> subPackages) {
+        Integer maxOpcode = -1 >>> (32 - getCountBitInOpcode());
         for (var pack : subPackages) {
             Reflections reflections = new Reflections("coreforge.commands." + pack);
             var riscVCommands = reflections.getSubTypesOf(Command.class).stream()
@@ -37,6 +40,12 @@ public abstract class TypeCommandFormat<T extends Register<T>> {
                     .collect(Collectors.toSet());
             for (var command : riscVCommands) {
                 Integer nowOpcode = command.getAnnotation(RiscVCommand.class).opcode();
+                if (nowOpcode > maxOpcode) {
+                    throw new IllegalArgumentException("Opcode in class " + command.getName() +
+                            " more max size (" + getCountBitInOpcode() + ")" +
+                            " opcode for this type command, this type command: " +
+                            this.getClass().getName() + " in " + command.getPackage());
+                }
                 if (!commands.containsKey(nowOpcode) ||
                         commands.get(nowOpcode).getClass().getPackage() != command.getPackage()) {
                     try {
@@ -61,7 +70,7 @@ public abstract class TypeCommandFormat<T extends Register<T>> {
                 } else {
                     throw new IllegalArgumentException("Classes " + command.getName() +
                             " and " + commands.get(nowOpcode) + " have same opcode. Opcode is " +
-                            nowOpcode);
+                            nowOpcode + ", package " + command.getPackage());
                 }
             }
         }
@@ -86,16 +95,20 @@ public abstract class TypeCommandFormat<T extends Register<T>> {
      * Extracts the operands from the encoded instruction.
      *
      * @param outputArray array that receives the decoded operands
-     * @param command four instruction bytes in most-significant-byte-first order
+     * @param command     four instruction bytes in most-significant-byte-first
+     *                    order
      */
     protected abstract void getArgs(int[] outputArray, byte[] command);
+
+    protected abstract int getCountBitInOpcode();
 
     /**
      * Finds the matching command and replaces its operands with the decoded values.
      *
      * @param command four instruction bytes in most-significant-byte-first order
      * @return cached command with the new operands
-     * @throws NullPointerException if no command is registered for the extracted opcode
+     * @throws NullPointerException if no command is registered for the extracted
+     *                              opcode
      */
     public final Command decode(byte[] command) {
         if (args == null) {

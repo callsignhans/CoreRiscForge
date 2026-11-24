@@ -42,4 +42,9 @@ public class RegisterTypeFormat<T extends Register<T>> extends TypeCommandFormat
         args[2] = (command[1] >> 4 & 0b1111) + ((command[0] & 0b1) << 4);
 
     }
+
+    @Override
+    protected int getCountBitInOpcode() {
+        return 17;
+    }
 }
