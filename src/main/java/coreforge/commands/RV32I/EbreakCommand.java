@@ -16,7 +16,7 @@ import coreforge.typesFormat.ImmediateTypeFormat;
  *
  * @param <T> register implementation used by the kernel
  */
-@RiscVCommand(opcode = 0b0000000000010001110011, type = ImmediateTypeFormat.class)
+@RiscVCommand(opcode = 0b0001110011, type = ImmediateTypeFormat.class)
 public class EbreakCommand<T extends Register<T>> extends ThreeArgumentCommand<T> {
 
     /**

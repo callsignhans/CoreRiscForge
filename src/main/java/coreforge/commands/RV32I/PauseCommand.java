@@ -16,7 +16,7 @@ import coreforge.typesFormat.ImmediateTypeFormat;
  *
  * @param <T> register implementation used by the kernel
  */
-@RiscVCommand(opcode = 0b0000000100000000001111, type = ImmediateTypeFormat.class)
+@RiscVCommand(opcode = 0b0000001111, type = ImmediateTypeFormat.class)
 public class PauseCommand<T extends Register<T>> extends ThreeArgumentCommand<T> {
 
     /**
