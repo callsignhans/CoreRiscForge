@@ -44,7 +44,7 @@ public abstract class TypeCommandFormat<T extends Register<T>> {
                     throw new IllegalArgumentException("Opcode in class " + command.getName() +
                             " more max size (" + getCountBitInOpcode() + ")" +
                             " opcode for this type command, this type command: " +
-                            this.getClass().getName() + " in " + command.getPackage());
+                            this.getClass().getName() + " in package " + pack);
                 }
                 if (!commands.containsKey(nowOpcode) ||
                         commands.get(nowOpcode).getClass().getPackage() != command.getPackage()) {
@@ -64,13 +64,13 @@ public abstract class TypeCommandFormat<T extends Register<T>> {
                             throw new RuntimeException(originalException);
                         } else {
                             throw new IllegalArgumentException("Class " + command.getName() +
-                                    " haven't correct constructor");
+                                    " haven't correct constructor, package " + pack);
                         }
                     }
                 } else {
                     throw new IllegalArgumentException("Classes " + command.getName() +
                             " and " + commands.get(nowOpcode) + " have same opcode. Opcode is " +
-                            nowOpcode + ", package " + command.getPackage());
+                            nowOpcode + ", package " + pack);
                 }
             }
         }
