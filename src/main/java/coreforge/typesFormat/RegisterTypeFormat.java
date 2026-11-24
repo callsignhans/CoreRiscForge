@@ -4,7 +4,20 @@ import java.util.List;
 import coreforge.KernelCommand;
 import coreforge.Register;
 
+/**
+ * Decodes RISC-V R-type opcodes and register operands.
+ *
+ * @param <T> register implementation used by the kernel
+ */
 public class RegisterTypeFormat<T extends Register<T>> extends TypeCommandFormat<T> {
+    /**
+     * Registers commands for the given R-type base opcode.
+     *
+     * @param opcode seven-bit base opcode to register
+     * @param kernel kernel that provides access to registers and memory
+     * @param subPackages instruction package names relative to {@code coreforge.commands}
+     * @throws IllegalArgumentException if instruction registration finds a conflict or an incompatible constructor
+     */
     public RegisterTypeFormat(int opcode, KernelCommand<T> kernel, List<String> subPackages) {
         super(opcode, kernel, subPackages);
     }

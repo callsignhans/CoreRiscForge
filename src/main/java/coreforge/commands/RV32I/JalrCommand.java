@@ -7,9 +7,22 @@ import coreforge.commands.RiscVCommand;
 import coreforge.commands.ThreeArgumentCommand;
 import coreforge.typesFormat.ImmediateTypeFormat;
 
+/**
+ * Represents the RV32I {@code JALR} instruction.
+ *
+ * <p>In RISC-V, this instruction jumps to a register-relative target and saves the return address.
+ * The execution method is currently a stub.
+ *
+ * @param <T> register implementation used by the kernel
+ */
 @RiscVCommand(opcode = 0b0001100111, type = ImmediateTypeFormat.class)
 public class JalrCommand<T extends Register<T>> extends ThreeArgumentCommand<T> {
 
+    /**
+     * Creates the {@code JALR} command for a kernel.
+     *
+     * @param cpu kernel that provides access to registers and memory
+     */
     public JalrCommand(KernelCommand<T> cpu) {
         super(cpu);
     }

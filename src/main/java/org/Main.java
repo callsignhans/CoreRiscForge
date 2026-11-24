@@ -6,7 +6,15 @@ import coreforge.Kernel32;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 
+/**
+ * Runs a decoding and execution demonstration for an ADD instruction.
+ */
 public class Main {
+    /**
+     * Decodes and executes a sample ADD instruction 100,000 times.
+     *
+     * @param args command-line arguments, currently unused
+     */
     public static void main(String[] args) {
         Kernel32 kernel32 = new Kernel32();
         var packs = new ArrayList<String>();

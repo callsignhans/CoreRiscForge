@@ -7,9 +7,22 @@ import coreforge.commands.RiscVCommand;
 import coreforge.commands.ThreeArgumentCommand;
 import coreforge.typesFormat.ImmediateTypeFormat;
 
+/**
+ * Represents the RV32I {@code ORI} instruction.
+ *
+ * <p>In RISC-V, this instruction computes the bitwise OR of a register and a sign-extended immediate.
+ * The execution method is currently a stub.
+ *
+ * @param <T> register implementation used by the kernel
+ */
 @RiscVCommand(opcode = 0b1100010011, type = ImmediateTypeFormat.class)
 public class OriCommand<T extends Register<T>> extends ThreeArgumentCommand<T> {
 
+    /**
+     * Creates the {@code ORI} command for a kernel.
+     *
+     * @param cpu kernel that provides access to registers and memory
+     */
     public OriCommand(KernelCommand<T> cpu) {
         super(cpu);
     }

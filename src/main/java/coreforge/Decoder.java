@@ -7,9 +7,21 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Selects an instruction format from the base opcode of a RISC-V instruction.
+ *
+ * @param <T> register implementation used by the kernel
+ */
 public class Decoder<T extends Register<T>> {
     TypeCommandFormat<T>[] parsers = new TypeCommandFormat[128];
 
+    /**
+     * Discovers instruction formats in the requested packages.
+     *
+     * @param cpu kernel that provides access to registers and memory
+     * @param subPackages instruction package names relative to {@code coreforge.commands}
+     * @throws IllegalArgumentException if instruction registration finds a conflict or an incompatible constructor
+     */
     public Decoder(KernelCommand<T> cpu, List<String> subPackages) {
         for (var pack : subPackages) {
             var localParsers = new TypeCommandFormat[128];
@@ -51,6 +63,14 @@ public class Decoder<T extends Register<T>> {
         }
     }
 
+    /**
+     * Decodes an instruction and loads its operands into a cached command.
+     *
+     * @param command four instruction bytes in most-significant-byte-first order
+     * @return command with the decoded operands
+     * @throws IllegalArgumentException if the instruction does not contain four bytes
+     * @throws NullPointerException if no decoder or command is registered for the opcode
+     */
     public Command parse(byte[] command) {
         if (command.length != 4) {
             throw new IllegalArgumentException("Size command in Risc-V architecture equal 4 bytes");

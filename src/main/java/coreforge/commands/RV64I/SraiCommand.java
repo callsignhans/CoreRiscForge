@@ -7,9 +7,22 @@ import coreforge.commands.RiscVCommand;
 import coreforge.commands.ThreeArgumentCommand;
 import coreforge.typesFormat.ImmediateTypeFormat;
 
+/**
+ * Represents the RV64I {@code SRAI} instruction.
+ *
+ * <p>In RISC-V, this instruction shifts a register right arithmetically by an immediate amount.
+ * The execution method is currently a stub.
+ *
+ * @param <T> register implementation used by the kernel
+ */
 @RiscVCommand(opcode = 0b0100001010010011, type = ImmediateTypeFormat.class)
 public class SraiCommand<T extends Register<T>> extends ThreeArgumentCommand<T> {
 
+    /**
+     * Creates the {@code SRAI} command for a kernel.
+     *
+     * @param cpu kernel that provides access to registers and memory
+     */
     public SraiCommand(KernelCommand<T> cpu) {
         super(cpu);
     }

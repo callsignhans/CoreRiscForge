@@ -4,8 +4,21 @@ import java.util.List;
 import coreforge.KernelCommand;
 import coreforge.Register;
 
+/**
+ * Registers RISC-V S-type commands. Opcode and operand extraction are still stubs.
+ *
+ * @param <T> register implementation used by the kernel
+ */
 public class StoreTypeFormat<T extends Register<T>> extends TypeCommandFormat<T> {
 
+    /**
+     * Registers commands for the given S-type base opcode.
+     *
+     * @param opcode seven-bit base opcode to register
+     * @param cpu kernel that provides access to registers and memory
+     * @param subPackages instruction package names relative to {@code coreforge.commands}
+     * @throws IllegalArgumentException if instruction registration finds a conflict or an incompatible constructor
+     */
     public StoreTypeFormat(int opcode, KernelCommand<T> cpu, List<String> subPackages) {
         super(opcode, cpu, subPackages);
     }

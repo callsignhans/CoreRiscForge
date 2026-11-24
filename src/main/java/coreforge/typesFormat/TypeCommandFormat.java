@@ -10,10 +10,23 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Maps decoded opcode keys to reusable commands for an instruction format.
+ *
+ * @param <T> register implementation used by the kernel
+ */
 public abstract class TypeCommandFormat<T extends Register<T>> {
     int[] args;
     HashMap<Integer, Command<?>> commands = new HashMap<>();
 
+    /**
+     * Discovers and instantiates commands for the given base opcode.
+     *
+     * @param opcode seven-bit base opcode to register
+     * @param cpu kernel that provides access to registers and memory
+     * @param subPackages instruction package names relative to {@code coreforge.commands}
+     * @throws IllegalArgumentException if instruction registration finds a conflict or an incompatible constructor
+     */
     public TypeCommandFormat(int opcode, KernelCommand<T> cpu, List<String> subPackages) {
         for (var pack : subPackages) {
             Reflections reflections = new Reflections("coreforge.commands." + pack);
@@ -53,12 +66,36 @@ public abstract class TypeCommandFormat<T extends Register<T>> {
         }
     }
 
+    /**
+     * Extracts the command lookup key from the instruction bytes.
+     *
+     * @param command four instruction bytes in most-significant-byte-first order
+     * @return opcode key used to find the command
+     */
     protected abstract int getOpcodeFromCommand(byte[] command);
 
+    /**
+     * Returns the number of operands extracted by this format.
+     *
+     * @return operand count
+     */
     protected abstract int getCountArg();
 
+    /**
+     * Extracts the operands from the encoded instruction.
+     *
+     * @param outputArray array that receives the decoded operands
+     * @param command four instruction bytes in most-significant-byte-first order
+     */
     protected abstract void getArgs(int[] outputArray, byte[] command);
 
+    /**
+     * Finds the matching command and replaces its operands with the decoded values.
+     *
+     * @param command four instruction bytes in most-significant-byte-first order
+     * @return cached command with the new operands
+     * @throws NullPointerException if no command is registered for the extracted opcode
+     */
     public final Command decode(byte[] command) {
         if (args == null) {
             args = new int[getCountArg()];

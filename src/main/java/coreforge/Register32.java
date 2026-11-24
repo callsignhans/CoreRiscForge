@@ -1,8 +1,17 @@
 package coreforge;
 
+/**
+ * Represents a 32-bit register value.
+ * Addition is implemented. The remaining arithmetic, bitwise, and comparison methods are stubs.
+ */
 public class Register32 implements Register<Register32> {
 
     int value;
+    /**
+     * Creates a register with the given bit pattern.
+     *
+     * @param val initial 32-bit value
+     */
     Register32(int val) {
         value = val;
     }

@@ -5,9 +5,16 @@ import java.util.List;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
+/**
+ * Provides a 32-register kernel and debugger access for RV32.
+ * Memory reads currently return zero and memory writes have no effect.
+ */
 public class Kernel32 implements KernelCommand<Register32>, KernelDebug {
     List<Register32> regs = new ArrayList<>();
 
+    /**
+     * Creates 32 registers initialized to their indices.
+     */
     public Kernel32() {
         for (int i = 0; i < 32; i++) {
             regs.add(new Register32(i));
