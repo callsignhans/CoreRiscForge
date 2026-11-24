@@ -10,7 +10,8 @@ import coreforge.typesFormat.BranchTypeFormat;
 /**
  * Represents the RV32I {@code BGEU} instruction.
  *
- * <p>In RISC-V, this instruction branches if the first unsigned register value is greater than or equal to the second.
+ * <p>In RISC-V, this instruction branches if the first unsigned register value is greater than or
+ * equal to the second.
  * The execution method is currently a stub.
  *
  * @param <T> register implementation used by the kernel

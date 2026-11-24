@@ -20,7 +20,8 @@ public class Decoder<T extends Register<T>> {
      *
      * @param cpu kernel that provides access to registers and memory
      * @param subPackages instruction package names relative to {@code coreforge.commands}
-     * @throws IllegalArgumentException if instruction registration finds a conflict or an incompatible constructor
+     * @throws IllegalArgumentException if instruction registration finds a conflict or an
+     *     incompatible constructor
      */
     public Decoder(KernelCommand<T> cpu, List<String> subPackages) {
         for (var pack : subPackages) {

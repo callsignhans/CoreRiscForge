@@ -9,7 +9,8 @@ import coreforge.typesFormat.RegisterTypeFormat;
 /**
  * Represents the RV32I {@code SRA} instruction.
  *
- * <p>In RISC-V, this instruction shifts a register right arithmetically by a register-specified amount.
+ * <p>In RISC-V, this instruction shifts a register right arithmetically by a register-specified
+ * amount.
  * The execution method is currently a stub.
  *
  * @param <T> register implementation used by the kernel

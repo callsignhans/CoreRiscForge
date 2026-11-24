@@ -10,7 +10,8 @@ import coreforge.typesFormat.ImmediateTypeFormat;
 /**
  * Represents the RV32I {@code SLTI} instruction.
  *
- * <p>In RISC-V, this instruction tests whether a signed register value is less than an immediate and writes 1 or 0.
+ * <p>In RISC-V, this instruction tests whether a signed register value is less than an immediate
+ * and writes 1 or 0.
  * The execution method is currently a stub.
  *
  * @param <T> register implementation used by the kernel

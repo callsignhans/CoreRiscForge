@@ -10,7 +10,8 @@ import coreforge.typesFormat.ImmediateTypeFormat;
 /**
  * Represents the RV64I {@code ADDIW} instruction.
  *
- * <p>In RISC-V, this instruction adds a sign-extended immediate and sign-extends the low 32 bits of the result.
+ * <p>In RISC-V, this instruction adds a sign-extended immediate and sign-extends the low 32 bits of
+ * the result.
  * The execution method is currently a stub.
  *
  * @param <T> register implementation used by the kernel

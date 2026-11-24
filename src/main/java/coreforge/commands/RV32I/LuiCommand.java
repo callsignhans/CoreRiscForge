@@ -10,7 +10,8 @@ import coreforge.typesFormat.UpperImmediateTypeFormat;
 /**
  * Represents the RV32I {@code LUI} instruction.
  *
- * <p>In RISC-V, this instruction loads an immediate into the upper 20 bits of a word and clears the low 12 bits.
+ * <p>In RISC-V, this instruction loads an immediate into the upper 20 bits of a word and clears the
+ * low 12 bits.
  * The execution method is currently a stub.
  *
  * @param <T> register implementation used by the kernel

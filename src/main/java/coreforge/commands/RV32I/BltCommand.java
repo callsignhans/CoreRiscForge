@@ -10,7 +10,8 @@ import coreforge.typesFormat.BranchTypeFormat;
 /**
  * Represents the RV32I {@code BLT} instruction.
  *
- * <p>In RISC-V, this instruction branches if the first signed register value is less than the second.
+ * <p>In RISC-V, this instruction branches if the first signed register value is less than the
+ * second.
  * The execution method is currently a stub.
  *
  * @param <T> register implementation used by the kernel

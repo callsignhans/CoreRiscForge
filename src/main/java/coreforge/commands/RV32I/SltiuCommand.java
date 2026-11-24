@@ -10,7 +10,8 @@ import coreforge.typesFormat.ImmediateTypeFormat;
 /**
  * Represents the RV32I {@code SLTIU} instruction.
  *
- * <p>In RISC-V, this instruction tests whether a register is less than a sign-extended immediate using an unsigned comparison.
+ * <p>In RISC-V, this instruction tests whether a register is less than a sign-extended immediate
+ * using an unsigned comparison.
  * The execution method is currently a stub.
  *
  * @param <T> register implementation used by the kernel

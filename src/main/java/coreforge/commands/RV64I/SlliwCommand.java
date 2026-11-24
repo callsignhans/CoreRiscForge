@@ -10,7 +10,8 @@ import coreforge.typesFormat.ImmediateTypeFormat;
 /**
  * Represents the RV64I {@code SLLIW} instruction.
  *
- * <p>In RISC-V, this instruction shifts the low 32 bits left by an immediate amount and sign-extends the result.
+ * <p>In RISC-V, this instruction shifts the low 32 bits left by an immediate amount and
+ * sign-extends the result.
  * The execution method is currently a stub.
  *
  * @param <T> register implementation used by the kernel

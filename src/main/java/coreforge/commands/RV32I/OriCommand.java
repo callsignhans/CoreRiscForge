@@ -10,7 +10,8 @@ import coreforge.typesFormat.ImmediateTypeFormat;
 /**
  * Represents the RV32I {@code ORI} instruction.
  *
- * <p>In RISC-V, this instruction computes the bitwise OR of a register and a sign-extended immediate.
+ * <p>In RISC-V, this instruction computes the bitwise OR of a register and a sign-extended
+ * immediate.
  * The execution method is currently a stub.
  *
  * @param <T> register implementation used by the kernel
